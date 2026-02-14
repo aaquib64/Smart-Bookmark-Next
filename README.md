@@ -44,26 +44,26 @@ Installation
 Problems Faced & Solutions:
   While building this project, I ran into several challenges and learned how to solve them:
 
-  Supabase Environment Variables Not Found
+  1- Supabase Environment Variables Not Found:
     Problem: Deployment failed with the error supabaseUrl is required.
     Solution: Added NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local and configured the same variables in Vercel/Netlify.
 
-Google OAuth Login Not Working
+2- Google OAuth Login Not Working:
     Problem: Users could not log in via Google OAuth.
     Solution: Configured the correct Client ID and Client Secret in Supabase → Authentication → Providers → Google and ensured the redirect URL matched Google          Cloud Console.
 
-Prerendering Errors on Dashboard
+3- Prerendering Errors on Dashboard:
     Problem: The dashboard page caused a prerendering error (Error occurred prerendering page "/dashboard") because it depended on dynamic user-specific data.
     Solution: Switched from getStaticProps to getServerSideProps for pages requiring dynamic data.
 
-Database Table Already Exists
+4- Database Table Already Exists:
     Problem: SQL query to create the bookmarks table failed with relation "bookmarks" already exists.
     Solution: Used DROP TABLE IF EXISTS bookmarks; before creating the table or skipped creation if it already existed.
 
-Row-Level Security (RLS) Policy Issues
+5- Row-Level Security (RLS) Policy Issues:
     Problem: Users could not access their own bookmarks.
     Solution: Added a policy on the bookmarks table:
-    Policy Name: Allow individual users
+      Policy Name: Allow individual users
       Using Expression: user_id = auth.uid()
       This allowed each user to access only their own data securely.
 
