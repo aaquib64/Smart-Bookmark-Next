@@ -17,7 +17,7 @@ Hosting/Deployment: Vercel
 
 Installation
 1- Clone the repository:
-   git clone https://github.com/yourusername/yourproject.git
+   git clone https://github.com/aaquib64/yourproject.git
    cd yourproject
 
 2- Install dependencies:
